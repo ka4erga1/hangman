@@ -58,7 +58,6 @@ class hangman:
         print(game.prins())
         print("Угаданные: ", self.guessed)
         print("Неверные: ", self.wrong)
-        print(self.lives)
      
     def prins(self):
         s = "*Сделать виселицу"
