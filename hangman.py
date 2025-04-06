@@ -36,24 +36,30 @@ class hangman:
             if f in self.guessed:
                 print("Буква повторяется")
             elif f in self.bukvi and f in self.word:
-                print("Буква ", f, " есть")
-                for i in range(self.word.count(f)):
-                    self.guessed.pop(self.word.index(f))
-                    self.guessed.insert(self.word.index(f), f)
-                print(game.prins())
-                print(self.guessed)
+                game.right(self, f)
             elif f in self.bukvi and f not in self.word:
-                print("Буквы ", f, " нет")
-                self.lives -= 1
-                self.wrong.append(f)
-                print(game.prins())
-                print("Угаданные: ", self.guessed)
-                print("Неверные: ", self.wrong)
-                print(self.lives)
+                game.wrong(f)
             else:
                 print("Ошибка ввода")
         game.end()
-            
+    
+    def right(self, f):
+        print("Буква ", f, " есть")
+        for i in range(self.word.count(f)):
+            self.guessed.pop(self.word.index(f))
+            self.guessed.insert(self.word.index(f), f)
+        print(game.prins())
+        print(self.guessed)
+        
+    def wrong(self, f):
+        print("Буквы ", f, " нет")
+        self.lives -= 1
+        self.wrong.append(f)
+        print(game.prins())
+        print("Угаданные: ", self.guessed)
+        print("Неверные: ", self.wrong)
+        print(self.lives)
+     
     def prins(self):
         s = "*Сделать виселицу"
         return s
